@@ -861,35 +861,35 @@
 				Name="Common"
 				>
 				<File
-					RelativePath="..\Boot\Windows\Release_AES\BootLoader.com.gz"
+					RelativePath="..\Boot\Windows\Release_AES\BootLoader.com"
 					>
 				</File>
 				<File
-					RelativePath="..\Boot\Windows\Release\BootLoader.com.gz"
+					RelativePath="..\Boot\Windows\Release\BootLoader.com"
 					>
 				</File>
 				<File
-					RelativePath="..\Boot\Windows\Release_Twofish\BootLoader.com.gz"
+					RelativePath="..\Boot\Windows\Release_Twofish\BootLoader.com"
 					>
 				</File>
 				<File
-					RelativePath="..\Boot\Windows\Rescue_Serpent\BootLoader.com.gz"
+					RelativePath="..\Boot\Windows\Rescue_Serpent\BootLoader.com"
 					>
 				</File>
 				<File
-					RelativePath="..\Boot\Windows\Rescue_AES\BootLoader.com.gz"
+					RelativePath="..\Boot\Windows\Rescue_AES\BootLoader.com"
 					>
 				</File>
 				<File
-					RelativePath="..\Boot\Windows\Rescue\BootLoader.com.gz"
+					RelativePath="..\Boot\Windows\Rescue\BootLoader.com"
 					>
 				</File>
 				<File
-					RelativePath="..\Boot\Windows\Rescue_Twofish\BootLoader.com.gz"
+					RelativePath="..\Boot\Windows\Rescue_Twofish\BootLoader.com"
 					>
 				</File>
 				<File
-					RelativePath="..\Boot\Windows\Release_Serpent\BootLoader.com.gz"
+					RelativePath="..\Boot\Windows\Release_Serpent\BootLoader.com"
 					>
 				</File>
 				<File
@@ -961,10 +961,6 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\Boot\Windows\Release\Decompressor.com"
-					>
-				</File>
-				<File
 					RelativePath="..\Common\Language.xml"
 					>
 				</File>
@@ -991,35 +987,35 @@
 			</Filter>
 		</Filter>
 		<File
-			RelativePath="..\Boot\Windows\Release_Serpent_SHA2\BootLoader.com.gz"
+			RelativePath="..\Boot\Windows\Release_Serpent_SHA2\BootLoader.com"
 			>
 		</File>
 		<File
-			RelativePath="..\Boot\Windows\Release_Twofish_SHA2\BootLoader.com.gz"
+			RelativePath="..\Boot\Windows\Release_Twofish_SHA2\BootLoader.com"
 			>
 		</File>
 		<File
-			RelativePath="..\Boot\Windows\Rescue_SHA2\BootLoader.com.gz"
+			RelativePath="..\Boot\Windows\Rescue_SHA2\BootLoader.com"
 			>
 		</File>
 		<File
-			RelativePath="..\Boot\Windows\Rescue_AES_SHA2\BootLoader.com.gz"
+			RelativePath="..\Boot\Windows\Rescue_AES_SHA2\BootLoader.com"
 			>
 		</File>
 		<File
-			RelativePath="..\Boot\Windows\Rescue_Serpent_SHA2\BootLoader.com.gz"
+			RelativePath="..\Boot\Windows\Rescue_Serpent_SHA2\BootLoader.com"
 			>
 		</File>
 		<File
-			RelativePath="..\Boot\Windows\Rescue_Twofish_SHA2\BootLoader.com.gz"
+			RelativePath="..\Boot\Windows\Rescue_Twofish_SHA2\BootLoader.com"
 			>
 		</File>
 		<File
-			RelativePath="..\Boot\Windows\Release_SHA2\BootLoader.com.gz"
+			RelativePath="..\Boot\Windows\Release_SHA2\BootLoader.com"
 			>
 		</File>
 		<File
-			RelativePath="..\Boot\Windows\Release_AES_SHA2\BootLoader.com.gz"
+			RelativePath="..\Boot\Windows\Release_AES_SHA2\BootLoader.com"
 			>
 		</File>
 	</Files>

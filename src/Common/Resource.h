@@ -25,7 +25,6 @@
 #define IDR_BOOT_SECTOR_AES             521
 #define IDR_BOOT_SECTOR_SERPENT         522
 #define IDR_BOOT_SECTOR_TWOFISH         523
-#define IDR_BOOT_LOADER_DECOMPRESSOR    524
 #define IDR_BOOT_LOADER                 525
 #define IDR_BOOT_LOADER_AES             526
 #define IDR_BOOT_LOADER_SERPENT         527

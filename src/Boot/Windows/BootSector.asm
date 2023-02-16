@@ -69,44 +69,19 @@ memory_ok:
 	cld
 	rep stosb
 
-	mov ax, es
-	sub ax, TC_BOOT_LOADER_DECOMPRESSOR_MEMORY_SIZE / 16	; Decompressor segment
-	mov es, ax
-
-	; Load decompressor
-	mov cl, TC_BOOT_LOADER_DECOMPRESSOR_START_SECTOR
-retry_backup:
-	mov al, TC_BOOT_LOADER_DECOMPRESSOR_SECTOR_COUNT
-	mov bx, TC_COM_EXECUTABLE_OFFSET
-	call read_sectors
-
-	; Decompressor checksum
-	xor ebx, ebx
-	mov si, TC_COM_EXECUTABLE_OFFSET
-	mov cx, TC_BOOT_LOADER_DECOMPRESSOR_SECTOR_COUNT * TC_LB_SIZE
-	call checksum
-	push ebx
-
-	; Load compressed boot loader
-	mov bx, TC_BOOT_LOADER_COMPRESSED_BUFFER_OFFSET
+	; Load boot loader
 	mov cl, TC_BOOT_LOADER_START_SECTOR
 	mov al, TC_MAX_BOOT_LOADER_SECTOR_COUNT
 
-	test backup_loader_used, 1
-	jz non_backup
-	mov al, TC_BOOT_LOADER_BACKUP_SECTOR_COUNT - TC_BOOT_LOADER_DECOMPRESSOR_SECTOR_COUNT
-	mov cl, TC_BOOT_LOADER_START_SECTOR + TC_BOOT_LOADER_BACKUP_SECTOR_COUNT
-
-non_backup:
+retry_backup:
+	mov bx, TC_COM_EXECUTABLE_OFFSET
 	call read_sectors
 
-	; Boot loader checksum
-	pop ebx
-	mov si, TC_BOOT_LOADER_COMPRESSED_BUFFER_OFFSET
+	; Verify checksum
+	xor ebx, ebx
+	mov si, TC_COM_EXECUTABLE_OFFSET
 	mov cx, word ptr [start + TC_BOOT_SECTOR_LOADER_LENGTH_OFFSET]
 	call checksum
-
-	; Verify checksum
 	cmp ebx, dword ptr [start + TC_BOOT_SECTOR_LOADER_CHECKSUM_OFFSET]
 	je checksum_ok
 
@@ -115,7 +90,8 @@ non_backup:
 	jnz loader_damaged
 
 	mov backup_loader_used, 1
-	mov cl, TC_BOOT_LOADER_DECOMPRESSOR_START_SECTOR + TC_BOOT_LOADER_BACKUP_SECTOR_COUNT
+	mov cl, TC_BOOT_LOADER_START_SECTOR + TC_BOOT_LOADER_BACKUP_SECTOR_COUNT
+	mov al, TC_BOOT_LOADER_BACKUP_SECTOR_COUNT
 
 	test TC_BOOT_CFG_FLAG_BACKUP_LOADER_AVAILABLE, byte ptr [start + TC_BOOT_SECTOR_CONFIG_OFFSET]
 	jnz retry_backup
@@ -128,54 +104,11 @@ loader_damaged:
 	jmp $
 checksum_ok:
 
-	; Set up decompressor segment
-	mov ax, es
-	mov ds, ax
-	cli
-	mov ss, ax
-	mov sp, TC_BOOT_LOADER_DECOMPRESSOR_MEMORY_SIZE
-	sti
-
-	push dx
-
-	; Decompress boot loader
-	mov cx, word ptr cs:[start + TC_BOOT_SECTOR_LOADER_LENGTH_OFFSET]
-	sub cx, TC_GZIP_HEADER_SIZE
-	push cx																		; Compressed data size
-	push TC_BOOT_LOADER_COMPRESSED_BUFFER_OFFSET + TC_GZIP_HEADER_SIZE			; Compressed data
-	push TC_MAX_BOOT_LOADER_DECOMPRESSED_SIZE									; Output buffer size
-	push TC_BOOT_LOADER_DECOMPRESSOR_MEMORY_SIZE + TC_COM_EXECUTABLE_OFFSET		; Output buffer
-
-	push cs
-	push decompressor_ret
-	push es
-	push TC_COM_EXECUTABLE_OFFSET
-	retf
-decompressor_ret:
-
-	add sp, 8
-	pop dx
-
-	; Restore boot sector segment
-	push cs
-	pop ds
-
-	; Check decompression result
-	test ax, ax
-	jz decompression_ok
-
-	lea si, loader_damaged_msg
-	call print
-	jmp $
-decompression_ok:
-
 	; DH = boot sector flags
 	mov dh, byte ptr [start + TC_BOOT_SECTOR_CONFIG_OFFSET]
 
 	; Set up boot loader segment
 	mov ax, es
-	add ax, TC_BOOT_LOADER_DECOMPRESSOR_MEMORY_SIZE / 16
-	mov es, ax
 	mov ds, ax
 	cli
 	mov ss, ax

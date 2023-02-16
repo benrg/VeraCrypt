@@ -77,7 +77,6 @@ The following components are required for compiling VeraCrypt:
 	<li>Windows SDK 7.1</li>
 	<li>Windows Driver Kit 7.1</li>
 	<li>Windows 8.1 SDK</li>
-	<li>gzip</li>
 	<li>upx</li>
 	<li>7zip</li>
 	<li>Wix3</li>
@@ -101,7 +100,6 @@ The following components are required for compiling VeraCrypt:
 <li><a href="#InstallationOfWindowsSDK71++">Installation of the Windows SDK 7.1</a></li>
 <li><a href="#InstallationOfWDK71++">Installation of the Windows Driver Kit 7.1</a></li>
 <li><a href="#InstallationOfSDK81++">Installation of the Windows 8.1 SDK</a></li>
-<li><a href="#InstallationOfGzip">Installation of gzip</a></li>
 <li><a href="#InstallationOfUpx">Installation of upx</a></li>
 <li><a href="#InstallationOf7zip">Installation of 7zip</a></li>
 <li><a href="#InstallationOfWix3">Installation of Wix3</a></li>
@@ -514,63 +512,6 @@ The following components are required for compiling VeraCrypt:
   </div>
  </div>
  
- <div class="textbox" id="InstallationOfGzip">
-  <a href="#InstallationOfGzip">Installation of gzip</a>
-  <div class="texttohide">
-    <p>
-		<ol>
-			<li>
-				Please create the following folder: <br>
-				C:\Program Files (x86)\gzip
-			</li>
-			<li>
-				Please download gzip version at: <br>
-				<a href="https://sourceforge.net/projects/gnuwin32/files/gzip/1.3.12-1/gzip-1.3.12-1-bin.zip/download?use-mirror=netix&download=" target="_blank">https://sourceforge.net/projects/gnuwin32/files/gzip/1.3.12-1/gzip-1.3.12-1-bin.zip/download?use-mirror=netix&download=</a>
-			</li>
-			<li>
-				Copy the content of the downloaded zip to “C:\Program Files (x86)\gzip”
-			</li>
-			<li>
-				Add gzip to the path Variable. This will make the command globally available on the command line. <br>
-				<ol style="list-style-type: upper-roman;">
-					<li>
-						Open a file explorer
-					</li>
-					<li>
-						Within the left file tree, please make a right click on "This PC" and select "Properties" <br>
-						<img src="CompilingGuidelineWin/SelectThisPC.jpg" width="40%">
-					</li>
-					<li>
-						Within the right menu, please click on "Advanced system settings" <br>
-						<img src="CompilingGuidelineWin/SelectAdvancedSystemSettings.jpg" width="50%">
-					</li>
-					<li>
-						Please click on "Environment Variables" <br>
-						<img src="CompilingGuidelineWin/SelectEnvironmentVariables.jpg" width="17%">
-					</li>
-					<li>
-						Within the area of the system variables, please select the "Path" variable and click on "Edit..." <br>
-						<img src="CompilingGuidelineWin/SelectPathVariable.jpg" width="25%">
-					</li>
-					<li>
-						Click on "New" and add the following value: <br>
-						<p style="font-family: 'Courier New', monospace;">C:\Program Files (x86)\gzip\bin</p>
-					</li>
-					<li>
-						Close the windows by clicking on "OK"
-					</li>
-				</ol>
-			</li>
-			<li>
-				To check if the configuration is working correctly, please open a command prompt and watch the output of the following command: <br>
-				<p style="font-family: 'Courier New', monospace;">gzip</p> <br>
-				<img src="CompilingGuidelineWin/gzipCommandLine.jpg" width="50%">
-			</li>
-		</ol>
-	</p>
-  </div>
- </div>
-
  <div class="textbox" id="InstallationOfUpx">
   <a href="#InstallationOfUpx">Installation of upx</a>
   <div class="texttohide">
@@ -588,7 +529,7 @@ The following components are required for compiling VeraCrypt:
 				Copy the content of the downloaded zip to “C:\Program Files (x86)\upx”
 			</li>
 			<li>
-				Add gzip to the path Variable. This will make the command globally available on the command line. <br>
+				Add upx to the path Variable. This will make the command globally available on the command line. <br>
 				<ol style="list-style-type: upper-roman;">
 					<li>
 						Open a file explorer

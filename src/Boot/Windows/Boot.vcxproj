@@ -230,7 +230,6 @@ nmake.exe /nologo RELEASE=1 SINGLE_CIPHER=TWOFISH</NMakeReBuildCommandLine>
     <ClCompile Include="BootEncryptedIo.cpp" />
     <ClCompile Include="BootMain.cpp" />
     <ClCompile Include="BootMemory.cpp" />
-    <ClCompile Include="Decompressor.c" />
     <ClCompile Include="IntFilter.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="..\..\Common\Crc.c" />
@@ -246,7 +245,6 @@ nmake.exe /nologo RELEASE=1 SINGLE_CIPHER=TWOFISH</NMakeReBuildCommandLine>
     <ClCompile Include="..\..\Crypto\Twofish.c" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="BootCrt.asm" />
     <None Include="BootSector.asm" />
     <None Include="..\..\Crypto\Aes_hw_cpu.asm" />
     <None Include="..\..\Crypto\AesSmall_x86.asm" />

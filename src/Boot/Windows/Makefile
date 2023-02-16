@@ -51,10 +51,10 @@ CFLAGS = $(CFLAGS) /D TC_WINDOWS_BOOT_BLAKE2S
 
 OUTDIR = $(OBJDIR)
 TARGETEXT = com
-TARGETS = $(OUTDIR)\BootDefs.i $(OUTDIR)\BootSector.bin $(OUTDIR)\Decompressor.com
+TARGETS = $(OUTDIR)\BootDefs.i $(OUTDIR)\BootSector.bin
 CFLAGS = $(CFLAGS) /AT /Zl /f- /G3 /Oe /Os /Ob1 /OV0 /Gs /Gf /Gy /D NDEBUG
 LFLAGS = $(LFLAGS) /NOD /NOE /TINY
-OBJS = $(OUTDIR)\BootCrt.obj
+OBJS =
 LIBS = slibce
 
 !if 1
@@ -171,12 +171,6 @@ $(OUTDIR)\BootSector.bin: $(OUTDIR)\BootSector.obj
 	-dd.exe conv=notrunc bs=512 if=BootSector.bin of=$(PROJ).flp 2>NUL:
 	cd ..
 
-$(OUTDIR)\Decompressor.com: $(OUTDIR)\BootCrt.obj $(OUTDIR)\Decompressor.obj
-	cd $(OBJDIR)
-	$(LD) $(LFLAGS) BootCrt.obj Decompressor.obj,Decompressor.com,Decompressor.map,$(MSVC16_ROOT)\lib\+slibce,,
-	-dd.exe conv=notrunc,sync bs=512 seek=1 if=Decompressor.com of=$(PROJ).flp 2>NUL:
-	cd ..
-
 $(OUTDIR)\$(PROJ).$(TARGETEXT): $(OBJS)
 	@echo Linking...
 	cd $(OBJDIR)
@@ -200,6 +194,5 @@ $(LIBS)
 #!if DEFINED(RESCUE_DISK) && (!DEFINED (SINGLE_CIPHER) || ("$(SINGLE_CIPHER)" == "SERPENT") || ("$(SINGLE_CIPHER)" == "CAMELLIA"))
 	upx $(PROJ).$(TARGETEXT)
 #!endif
-	gzip.exe -c -n --best $(PROJ).$(TARGETEXT) >$(PROJ).$(TARGETEXT).gz
-	-dd.exe conv=notrunc,sync bs=512 seek=5 if=$(PROJ).$(TARGETEXT).gz of=$(PROJ).flp 2>NUL:
+	-dd.exe conv=notrunc,sync bs=512 seek=1 if=$(PROJ).$(TARGETEXT) of=$(PROJ).flp 2>NUL:
 	cd ..

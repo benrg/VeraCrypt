@@ -246,28 +246,28 @@
     <None Include="VeraCrypt_wizard.bmp">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\Boot\Windows\Release_AES\BootLoader.com.gz">
+    <None Include="..\Boot\Windows\Release_AES\BootLoader.com">
       <Filter>Resource Files\Common</Filter>
     </None>
-    <None Include="..\Boot\Windows\Release\BootLoader.com.gz">
+    <None Include="..\Boot\Windows\Release\BootLoader.com">
       <Filter>Resource Files\Common</Filter>
     </None>
-    <None Include="..\Boot\Windows\Release_Twofish\BootLoader.com.gz">
+    <None Include="..\Boot\Windows\Release_Twofish\BootLoader.com">
       <Filter>Resource Files\Common</Filter>
     </None>
-    <None Include="..\Boot\Windows\Rescue_Serpent\BootLoader.com.gz">
+    <None Include="..\Boot\Windows\Rescue_Serpent\BootLoader.com">
       <Filter>Resource Files\Common</Filter>
     </None>
-    <None Include="..\Boot\Windows\Rescue_AES\BootLoader.com.gz">
+    <None Include="..\Boot\Windows\Rescue_AES\BootLoader.com">
       <Filter>Resource Files\Common</Filter>
     </None>
-    <None Include="..\Boot\Windows\Rescue\BootLoader.com.gz">
+    <None Include="..\Boot\Windows\Rescue\BootLoader.com">
       <Filter>Resource Files\Common</Filter>
     </None>
-    <None Include="..\Boot\Windows\Rescue_Twofish\BootLoader.com.gz">
+    <None Include="..\Boot\Windows\Rescue_Twofish\BootLoader.com">
       <Filter>Resource Files\Common</Filter>
     </None>
-    <None Include="..\Boot\Windows\Release_Serpent\BootLoader.com.gz">
+    <None Include="..\Boot\Windows\Release_Serpent\BootLoader.com">
       <Filter>Resource Files\Common</Filter>
     </None>
     <None Include="..\Boot\Windows\Rescue_AES\BootSector.bin">
@@ -292,9 +292,6 @@
       <Filter>Resource Files\Common</Filter>
     </None>
     <None Include="..\Boot\Windows\Release_AES\BootSector.bin">
-      <Filter>Resource Files\Common</Filter>
-    </None>
-    <None Include="..\Boot\Windows\Release\Decompressor.com">
       <Filter>Resource Files\Common</Filter>
     </None>
     <None Include="..\Common\Language.xml">

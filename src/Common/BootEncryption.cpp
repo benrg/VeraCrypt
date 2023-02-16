@@ -1845,27 +1845,19 @@ namespace VeraCrypt
 			*(uint32 *) (buffer + TC_BOOT_SECTOR_OUTER_VOLUME_BAK_HEADER_CRC_OFFSET) = GetCrc32 (headerSector, sizeof (headerSector));
 		}
 
-		// Decompressor
-		byte *decompressor = MapResource (L"BIN", IDR_BOOT_LOADER_DECOMPRESSOR, &size);
-		if (!decompressor || size > TC_BOOT_LOADER_DECOMPRESSOR_SECTOR_COUNT * TC_SECTOR_SIZE_BIOS)
-			throw ParameterIncorrect (SRC_POS);
-
-		memcpy (buffer + TC_SECTOR_SIZE_BIOS, decompressor, size);
-
-		// Compressed boot loader
+		// Boot loader
 		byte *bootLoader = MapResource (L"BIN", bootLoaderId, &size);
 		if (!bootLoader || size > TC_MAX_BOOT_LOADER_SECTOR_COUNT * TC_SECTOR_SIZE_BIOS)
 			throw ParameterIncorrect (SRC_POS);
 
-		memcpy (buffer + TC_SECTOR_SIZE_BIOS + TC_BOOT_LOADER_DECOMPRESSOR_SECTOR_COUNT * TC_SECTOR_SIZE_BIOS, bootLoader, size);
+		memcpy (buffer + TC_SECTOR_SIZE_BIOS, bootLoader, size);
 
-		// Boot loader and decompressor checksum
+		// Boot loader checksum
 		*(uint16 *) (buffer + TC_BOOT_SECTOR_LOADER_LENGTH_OFFSET) = static_cast <uint16> (size);
-		*(uint32 *) (buffer + TC_BOOT_SECTOR_LOADER_CHECKSUM_OFFSET) = GetChecksum (buffer + TC_SECTOR_SIZE_BIOS,
-			TC_BOOT_LOADER_DECOMPRESSOR_SECTOR_COUNT * TC_SECTOR_SIZE_BIOS + size);
+		*(uint32 *) (buffer + TC_BOOT_SECTOR_LOADER_CHECKSUM_OFFSET) = GetChecksum (buffer + TC_SECTOR_SIZE_BIOS, size);
 
-		// Backup of decompressor and boot loader
-		if (size + TC_BOOT_LOADER_DECOMPRESSOR_SECTOR_COUNT * TC_SECTOR_SIZE_BIOS <= TC_BOOT_LOADER_BACKUP_SECTOR_COUNT * TC_SECTOR_SIZE_BIOS)
+		// Backup of boot loader
+		if (size <= TC_BOOT_LOADER_BACKUP_SECTOR_COUNT * TC_SECTOR_SIZE_BIOS)
 		{
 			memcpy (buffer + TC_SECTOR_SIZE_BIOS + TC_BOOT_LOADER_BACKUP_SECTOR_COUNT * TC_SECTOR_SIZE_BIOS,
 				buffer + TC_SECTOR_SIZE_BIOS, TC_BOOT_LOADER_BACKUP_SECTOR_COUNT * TC_SECTOR_SIZE_BIOS);

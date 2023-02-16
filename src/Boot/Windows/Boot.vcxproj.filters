@@ -41,9 +41,6 @@
     <ClCompile Include="BootMemory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Decompressor.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="IntFilter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -88,9 +85,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="BootCrt.asm">
-      <Filter>Source Files</Filter>
-    </None>
     <None Include="BootSector.asm">
       <Filter>Source Files</Filter>
     </None>

@@ -582,9 +582,6 @@
 			<Component Id="cmp3DABA5B6F2E779D915E1B8D680AE7855" Guid="{203AC826-E013-40E8-A944-9D9622669066}">
 				<File Id="fil6BA9B558534B9399EA06F31375A6D8C5" KeyPath="yes" Source="$(sys.CURRENTDIR)\docs\html\en\CompilingGuidelineWin\DownloadVSBuildTools.jpg" DiskId="1" />
 			</Component>
-			<Component Id="cmp2EA15F417E5EE9D31E028263C137695F" Guid="{F4EDBAFC-4B84-4502-9AA4-4272281B26B9}">
-				<File Id="fil2DD203CD9997BD21FC45EFDF85BECE94" KeyPath="yes" Source="$(sys.CURRENTDIR)\docs\html\en\CompilingGuidelineWin\gzipCommandLine.jpg" DiskId="1" />
-			</Component>
 			<Component Id="cmp51D438A1152A65EAD414012A5EAEA2CA" Guid="{8B4B3B03-9D19-4D15-9060-1ABB4CF4A80E}">
 				<File Id="fil612E91212B4BE3447B34C59AD43D5FC2" KeyPath="yes" Source="$(sys.CURRENTDIR)\docs\html\en\CompilingGuidelineWin\NasmCommandLine.jpg" DiskId="1" />
 			</Component>
